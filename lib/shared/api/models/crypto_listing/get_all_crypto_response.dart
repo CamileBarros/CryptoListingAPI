@@ -6,9 +6,9 @@ part 'get_all_crypto_response.g.dart';
 
 @JsonSerializable()
 class GetAllCryptoResponse {
-  final List<CryptoDataResponse> cryptoData;
+  final List<CryptoDataResponse> teste;
 
-  GetAllCryptoResponse(this.cryptoData);
+  GetAllCryptoResponse(this.teste);
 
   factory GetAllCryptoResponse.fromJson(Map<String, dynamic> json) =>
       _$GetAllCryptoResponseFromJson(json);

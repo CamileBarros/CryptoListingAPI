@@ -1,4 +1,5 @@
 import 'package:crypto_listing/shared/repositories/crypto_listing_repository.dart';
+import 'package:crypto_listing/src/mapper/crypto_listing_mapper.dart';
 import 'package:crypto_listing/src/model/crypto_listing_view_data.dart';
 
 class GetCryptoListingUseCase {
