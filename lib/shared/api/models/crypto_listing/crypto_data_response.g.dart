@@ -11,10 +11,9 @@ CryptoDataResponse _$CryptoDataResponseFromJson(Map<String, dynamic> json) =>
       json['symbol'] as String,
       json['name'] as String,
       json['slug'] as String,
-      CryptoMarketDataResponse.fromJson(
-          json['marketData'] as Map<String, dynamic>),
-      CryptoMarketCapResponse.fromJson(
-          json['marketCap'] as Map<String, dynamic>),
+      CryptoMetricsResponse.fromJson(json['marketcap'] as Map<String, dynamic>),
+      CryptoMetricsResponse.fromJson(
+          json['market_data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CryptoDataResponseToJson(CryptoDataResponse instance) =>
@@ -22,6 +21,6 @@ Map<String, dynamic> _$CryptoDataResponseToJson(CryptoDataResponse instance) =>
       'symbol': instance.symbol,
       'name': instance.name,
       'slug': instance.slug,
-      'marketData': instance.marketData,
-      'marketCap': instance.marketCap,
+      'marketcap': instance.marketcap,
+      'market_data': instance.market_data,
     };

@@ -9,7 +9,7 @@ part of 'get_all_crypto_response.dart';
 GetAllCryptoResponse _$GetAllCryptoResponseFromJson(
         Map<String, dynamic> json) =>
     GetAllCryptoResponse(
-      (json['teste'] as List<dynamic>)
+      (json['data'] as List<dynamic>)
           .map((e) => CryptoDataResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ GetAllCryptoResponse _$GetAllCryptoResponseFromJson(
 Map<String, dynamic> _$GetAllCryptoResponseToJson(
         GetAllCryptoResponse instance) =>
     <String, dynamic>{
-      'teste': instance.teste,
+      'data': instance.data,
     };

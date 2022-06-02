@@ -1,17 +1,16 @@
-import 'package:crypto_listing/shared/api/models/crypto_listing/crypto_market_cap_response.dart';
-import 'package:crypto_listing/shared/api/models/crypto_listing/crypto_market_data_response.dart';
+import 'package:crypto_listing/shared/api/models/crypto_listing/crypto_metrics_response.dart';
 
 class CryptoListingViewData {
   final String name;
   final String symbol;
   final String slug;
-  final CryptoMarketDataResponse marketData;
-  final CryptoMarketCapResponse marketCap;
+  final CryptoMetricsResponse market_data;
+  final CryptoMetricsResponse marketcap;
 
   CryptoListingViewData(
       {required this.name,
       required this.symbol,
       required this.slug,
-      required this.marketData,
-      required this.marketCap});
+      required this.market_data,
+      required this.marketcap});
 }

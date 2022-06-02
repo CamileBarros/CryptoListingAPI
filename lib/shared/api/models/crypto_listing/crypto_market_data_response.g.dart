@@ -9,7 +9,7 @@ part of 'crypto_market_data_response.dart';
 CryptoMarketDataResponse _$CryptoMarketDataResponseFromJson(
         Map<String, dynamic> json) =>
     CryptoMarketDataResponse(
-      json['price_usd'] as num,
+      json['price_usd'] as String,
     );
 
 Map<String, dynamic> _$CryptoMarketDataResponseToJson(

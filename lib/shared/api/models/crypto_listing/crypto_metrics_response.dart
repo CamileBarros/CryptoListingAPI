@@ -6,10 +6,10 @@ part 'crypto_metrics_response.g.dart';
 
 @JsonSerializable()
 class CryptoMetricsResponse {
-  final List<CryptoMarketDataResponse> marketData;
-  final List<CryptoMarketCapResponse> marketCap;
+  final CryptoMarketDataResponse market_data;
+  final CryptoMarketCapResponse marketcap;
 
-  CryptoMetricsResponse(this.marketData, this.marketCap);
+  CryptoMetricsResponse(this.market_data, this.marketcap);
 
   factory CryptoMetricsResponse.fromJson(Map<String, dynamic> json) =>
       _$CryptoMetricsResponseFromJson(json);
