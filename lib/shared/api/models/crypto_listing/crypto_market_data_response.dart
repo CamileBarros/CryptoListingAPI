@@ -4,7 +4,7 @@ part 'crypto_market_data_response.g.dart';
 
 @JsonSerializable()
 class CryptoMarketDataResponse {
-  final String price_usd;
+  final num price_usd;
 
   CryptoMarketDataResponse(this.price_usd);
 

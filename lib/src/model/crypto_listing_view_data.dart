@@ -4,13 +4,11 @@ class CryptoListingViewData {
   final String name;
   final String symbol;
   final String slug;
-  final CryptoMetricsResponse market_data;
-  final CryptoMetricsResponse marketcap;
+  final CryptoMetricsResponse metrics;
 
   CryptoListingViewData(
       {required this.name,
       required this.symbol,
       required this.slug,
-      required this.market_data,
-      required this.marketcap});
+      required this.metrics});
 }

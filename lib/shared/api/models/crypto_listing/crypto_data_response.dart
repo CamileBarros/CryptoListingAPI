@@ -8,11 +8,9 @@ class CryptoDataResponse {
   final String symbol;
   final String name;
   final String slug;
-  final CryptoMetricsResponse marketcap;
-  final CryptoMetricsResponse market_data;
+  final CryptoMetricsResponse metrics;
 
-  CryptoDataResponse(
-      this.symbol, this.name, this.slug, this.marketcap, this.market_data);
+  CryptoDataResponse(this.symbol, this.name, this.slug, this.metrics);
 
   factory CryptoDataResponse.fromJson(Map<String, dynamic> json) =>
       _$CryptoDataResponseFromJson(json);

@@ -8,8 +8,7 @@ extension CryptoListingMapper on GetAllCryptoResponse {
             name: datas.name,
             symbol: datas.symbol,
             slug: datas.slug,
-            marketcap: datas.marketcap,
-            market_data: datas.market_data))
+            metrics: datas.metrics))
         .toList();
   }
 }
