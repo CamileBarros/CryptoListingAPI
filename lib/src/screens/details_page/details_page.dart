@@ -1,6 +1,6 @@
 import 'package:crypto_listing/shared/themes/app_colors.dart';
 import 'package:crypto_listing/shared/themes/app_text_styles.dart';
-import 'package:crypto_listing/src/screens/details_page_provider.dart';
+import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
