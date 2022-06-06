@@ -1,0 +1,23 @@
+{
+    "nameWallet": "Portefeuille",
+    "nameHome": "Démarrer",
+    "nameMovement": "Mouvement",
+    "nameInfo": "Information",
+    "nameActualValue": "Valeur actuelle",
+    "nameMarketCap": "Cap boursière",
+    "nameMinValue": "Valeur minimum",
+    "nameMaxValue": "Valeur maximum",
+    "nameBtnConvert": "Conversion de devises",
+    "nameDetails": "Des détails",
+    "textValueConverted": "Montant converti",
+    "textConverted": "Montant à convertir",
+    "textConvertion": "A recevoir sur: ",
+    "textConvert": "Convertir à partir de : ",
+    "textConfirm": "Confirmer",
+    "textBack": "Retourner",
+    "textCancel": "Annuler",
+    "nameCurrency": "Pièce de monnaie",
+    "textError": "Oups! Certains champs n'étaient pas remplis...",
+    "textPerfomed": "Conversion effectuée",
+    "textSuccesfully": "Reconversion réussie!"
+}

@@ -1,0 +1,86 @@
+{
+    "nameWallet": "Wallet",
+    "@nameWallet": {
+      "description": "title of the page wallet"
+    },
+    "nameHome": "Home",
+    "@nameHome":{
+      "description": "title of the page home"
+    },
+    "nameMovement": "Movement",
+    "@nameMovement": {
+      "description": "title of the page movement"
+    },
+    "nameInfo": "Informations",
+    "@nameInfo":{
+      "description": "title of the informations in detail's page"
+    },
+    "nameActualValue": "Current value",
+    "@nameActualValue": {
+      "description": "title of item current value"
+    },
+    "nameMarketCap": "Market capitalization",
+    "@nameMarketCap":{
+      "description": "title of the item market capitalization"
+    },
+    "nameMinValue": "Minimum value",
+    "@nameMinValue": {
+      "description": "title of the item minimum value"
+    },
+    "nameMaxValue": "Maximum value",
+    "@nameMaxValue":{
+      "description": "title of the item maximum value"
+    },
+    "nameBtnConvert": "Convert currency",
+    "@nameBtnConvert": {
+      "description": "title of the button convert currency"
+    },
+    "nameDetails": "Details",
+    "@nameDetails":{
+      "description": "title of the page details"
+    },
+    "nameCurrency": "Crypto",
+    "@nameCurrency": {
+      "description": "name of the hint in convertion's page"
+    },
+    "textConvert": "Convert from: ",
+    "@textConvert": {
+      "description": "conversion page text that indicates what will be converted"
+    },
+    "textConverted": "Amount to be converted",
+    "@textConverted": {
+      "description": "convertion page text of the hint about amount to be convert"
+    },
+    "textConvertion": "To receive at: ",
+    "@textConvertion": {
+      "description": "conversion page text that indicates what was converted"
+    },
+    "textValueConverted": "Converted amount",
+    "@textValueConverted": {
+      "description": "convertion page text of the hint about amount that was converted"
+    }, 
+    "textConfirm": "Confirm",
+    "@textConfirm": {
+      "description": "text of the confirmation button"
+    },     
+    "textCancel": "Cancel",
+    "@textCancel": {
+      "description": "text of the cancelation button"
+    },                                
+    "textBack": "Back",
+    "@textBack": {
+      "description": "text of the back button"
+    },
+    "textPerfomed": "Conversion performed",
+    "@textPerfomed": {
+      "description": "successful conversion title"
+    },
+    "textSuccesfully": "Conversion done successfully!",
+    "@textSuccesfully": {
+      "description": "successful conversion phrase"
+    },
+    "textError": "Ops! Something is wrong...",
+    "@textError": {
+      "description": "error phrase"
+    }
+}

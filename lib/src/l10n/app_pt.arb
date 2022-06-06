@@ -1,0 +1,23 @@
+{
+    "nameWallet": "Carteira",
+    "nameHome": "Início",
+    "nameMovement": "Movimentação",
+    "nameInfo": "Informações",
+    "nameActualValue": "Valor atual",
+    "nameMarketCap": "Cap de mercado",
+    "nameMinValue": "Valor mínimo",
+    "nameMaxValue": "Valor máximo",
+    "nameBtnConvert": "Conversão de moeda",
+    "nameDetails": "Detalhes",
+    "textValueConverted": "Montante convertido",
+    "textConverted": "Montante a ser convertido",
+    "textConvertion": "Para receber em: ",
+    "textConvert": "Converter de: ",
+    "textConfirm": "Cofirmar",
+    "textBack": "Voltar",
+    "textCancel": "Cancelar",
+    "nameCurrency": "Moeda",
+    "textError": "Opa! Algum campo não foi preenchido...",
+    "textPerfomed": "Conversão Efetuada",
+    "textSuccesfully": "Conversão efetuada com sucesso!"
+}

@@ -1,0 +1,23 @@
+{
+    "nameWallet": "Portafoglio",
+    "nameHome": "Inizio",
+    "nameMovement": "Movimento",
+    "nameInfo": "Informazione",
+    "nameActualValue": "Valore corrente",
+    "nameMarketCap": "Capitolo di mercato",
+    "nameMinValue": "Valore minimo",
+    "nameMaxValue": "Valore massimo",
+    "nameBtnConvert": "Conversione di valuta",
+    "nameDetails": "Dettagli",
+    "textValueConverted": "Importo convertito",
+    "textConverted": "Importo da convertire",
+    "textConvertion": "Per ricevere a: ",
+    "textConvert": "Converti da: ",
+    "textConfirm": "Confermare",
+    "textBack": "Ritorno",
+    "textCancel": "Annulla",
+    "nameCurrency": "Moneta",
+    "textError": "Oops! Alcuni campi non sono stati riempiti...",
+    "textPerfomed": "Conversione eseguita",
+    "textSuccesfully": "Conversione riuscita!"
+}
