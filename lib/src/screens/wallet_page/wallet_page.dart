@@ -1,5 +1,8 @@
 import 'package:crypto_listing/shared/themes/app_colors.dart';
+import 'package:crypto_listing/shared/themes/app_images.dart';
 import 'package:crypto_listing/shared/themes/app_text_styles.dart';
+import 'package:crypto_listing/src/screens/details_page/details_page.dart';
+import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,10 +25,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
 
   @override
   Widget build(BuildContext context) {
-    // void _visibility(bool visibility) {
-    //   setState(() => show = visibility);
-    // }
-
+    final getCryptoListingProvider = ref.watch(cryptoListingProvider);
     bool show = ref.watch(visible);
     return Scaffold(
         appBar: PreferredSize(
@@ -46,8 +46,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                     child: Text(
-                      formatCurrency
-                          .format(containerDatas[0].cryptoInfo.valueWallet),
+                      '5000',
                       style: TextStyles.titlePrimary,
                     ),
                   ),
@@ -62,13 +61,13 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
               )),
         ),
         body: SingleChildScrollView(
-          child: Column(
+            child: getCryptoListingProvider.when(
+          data: (data) => Column(
             children: [
-              ...containerDatas
-                  .map(
-                    (e) => Column(
-                      children: [
-                        Container(
+              Column(
+                  children: data
+                      .map(
+                        (e) => Container(
                             decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
@@ -80,13 +79,13 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(48),
-                                      image: DecorationImage(
+                                      image: const DecorationImage(
                                           fit: BoxFit.fill,
-                                          image: AssetImage(
-                                              e.iconCrypto.assetName))),
+                                          image:
+                                              AssetImage(AppImages.iconBTC))),
                                 ),
-                                title: Text(e.initialsCrypto),
-                                subtitle: Text(e.nameCrypto),
+                                title: Text(e.symbol),
+                                subtitle: Text(e.name),
                                 trailing: AnimatedOpacity(
                                     opacity: show ? 1 : 0,
                                     duration: const Duration(milliseconds: 300),
@@ -95,14 +94,16 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Text(formatCurrency
-                                            .format(e.investedCrypto)),
+                                        Text(formatCurrency.format(
+                                            e.metrics.market_data.price_usd)),
                                         SizedBox(
                                           width: 53,
                                           height: 20,
                                           child: DecoratedBox(
                                             decoration: BoxDecoration(
-                                                color: e.dayVariation > 0
+                                                color: e.metrics.marketcap
+                                                            .marketcap_dominance_percent >
+                                                        0
                                                     ? AppColors.statusPos
                                                     : AppColors.statusNeg,
                                                 borderRadius:
@@ -110,37 +111,27 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                             child: Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 12, top: 2, right: 12),
-                                              child: Text(
-                                                  e.dayVariation.toString() +
-                                                      "%"),
+                                              child: Text(e.metrics.marketcap
+                                                  .marketcap_dominance_percent
+                                                  .toString()),
                                             ),
                                           ),
                                         )
                                       ],
                                     )),
                                 onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) => HomeDetails(
-                                  //               initials: e.initialsCrypto,
-                                  //               name: e.nameCrypto,
-                                  //               variation: e.dayVariation,
-                                  //               invested: e.investedCrypto,
-                                  //               min: e.cryptoInfo.valueMin,
-                                  //               max: e.cryptoInfo.valueMax,
-                                  //               actualCrypto: e.cryptoInfo
-                                  //                   .actualValueCrypto,
-                                  //               logicOfBtn: x,
-                                  //             )));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const DetailsPage()));
                                 })),
-                      ],
-                    ),
-                  )
-                  .toList(),
+                      )
+                      .toList()),
             ],
           ),
-        ));
+          error: (Object error, StackTrace? stackTrace) {},
+          loading: () {},
+        )));
   }
 }
-
