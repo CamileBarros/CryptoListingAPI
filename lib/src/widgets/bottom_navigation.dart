@@ -1,13 +1,16 @@
 import 'package:crypto_listing/shared/themes/app_colors.dart';
 import 'package:crypto_listing/shared/themes/app_images.dart';
 import 'package:crypto_listing/src/screens/details_page/details_page.dart';
+import 'package:crypto_listing/src/screens/home_page/home_page.dart';
 import 'package:crypto_listing/src/screens/movement_page/movement_page.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'bottom_navigation_provider.dart';
+final currentPage = StateProvider<int>((ref) {
+  return 0;
+});
 
 class BottomNavBar extends ConsumerStatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -18,8 +21,8 @@ class BottomNavBar extends ConsumerStatefulWidget {
 
 class BottomNavBarState extends ConsumerState<BottomNavBar> {
   final List<Widget> pages = [
+    const HomePage(),
     const HomeWalletPage(),
-    const DetailsPage(),
     const HomeMovement()
   ];
 

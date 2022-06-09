@@ -9,6 +9,7 @@ class CryptoDataResponse {
   final String name;
   final String slug;
   final CryptoMetricsResponse metrics;
+  // final List? values;
 
   CryptoDataResponse(this.symbol, this.name, this.slug, this.metrics);
 
