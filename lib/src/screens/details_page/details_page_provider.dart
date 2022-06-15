@@ -14,9 +14,12 @@ final cryptoListingProvider =
   return ref.read(getCryptoListingUseCase).execute();
 });
 
+final teste = FutureProvider.family<List<CryptoListingViewData>, dynamic>(
+    (ref, arg) async {
+  return ref.read(getCryptoListingUseCase).execute();
+});
+
 final chartsListingProvider =
     FutureProvider<List<ChartsListingViewData>>((ref) async {
   return ref.read(getCryptoListingUseCase).start();
 });
-// [0,1,2,3] List = List[2] = 2
-// {name: Carlos} Posicoes = Posicoes.name = carlos

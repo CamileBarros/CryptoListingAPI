@@ -7,18 +7,18 @@ import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CryptoLineChart extends ConsumerWidget {
-  const CryptoLineChart({Key? key}) : super(key: key);
+class CryptoBarChart extends ConsumerWidget {
+  const CryptoBarChart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool show = ref.watch(visible); //bool of animation
 
     final getCryptoListingProvider = ref.watch(chartsListingProvider);
-    List<dynamic> chartLine = [];
+    List<dynamic> barChart = [];
     getCryptoListingProvider.whenOrNull(
       data: (data) {
-        chartLine =
+        barChart =
             data.map((e) => ChartsListingViewData(values: e.values)).toList();
       },
     );
@@ -36,7 +36,7 @@ class CryptoLineChart extends ConsumerWidget {
     var teste2 = teste.subtract(const Duration(days: 1));
     var value = [];
     for (var i = 0; i < days; i++) {
-      value.add([chartLine[0].values[i][1], teste2]);
+      value.add([barChart[0].values[i][1], teste2]);
     }
 
     List<charts.Series<dynamic, DateTime>> series = [
@@ -59,18 +59,17 @@ class CryptoLineChart extends ConsumerWidget {
             child: Column(
               children: [
                 Expanded(
-                    child: charts.TimeSeriesChart(series,
-                        animate: ref.read(visible.state).state = show,
-                        dateTimeFactory: const charts.LocalDateTimeFactory(),
-                        domainAxis: const charts.DateTimeAxisSpec(
-                          tickFormatterSpec:
-                              charts.AutoDateTimeTickFormatterSpec(
-                            day: charts.TimeFormatterSpec(
-                              format: 'dd',
-                              transitionFormat: 'dd MMM',
-                            ),
-                          ),
-                        )))
+                  child: charts.TimeSeriesChart(
+                    series,
+                    animate: ref.read(visible.state).state = show,
+                    defaultRenderer: charts.BarRendererConfig<DateTime>(),
+                    defaultInteractions: false,
+                    behaviors: [
+                      charts.SelectNearest(),
+                      charts.DomainHighlighter()
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

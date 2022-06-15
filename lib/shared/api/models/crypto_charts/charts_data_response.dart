@@ -5,7 +5,6 @@ part 'charts_data_response.g.dart';
 @JsonSerializable()
 class ChartsDataResponse {
   final List<List<num>> values;
-  // final String name;
 
   ChartsDataResponse(this.values);
 

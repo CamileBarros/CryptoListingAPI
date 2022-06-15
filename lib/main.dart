@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/navigationBar': (BuildContext context) => const BottomNavBar()
       },
-      // ignore: unnecessary_const
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -22,7 +22,6 @@ class HomeWalletPage extends ConsumerStatefulWidget {
 class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
   final formatCurrency = NumberFormat.simpleCurrency();
   int x = 2; // part of logic of colors of the period's button
-
   @override
   Widget build(BuildContext context) {
     final getCryptoListingProvider = ref.watch(cryptoListingProvider);
@@ -101,8 +100,8 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                           height: 20,
                                           child: DecoratedBox(
                                             decoration: BoxDecoration(
-                                                color: e.metrics.marketcap
-                                                            .marketcap_dominance_percent >
+                                                color: e.metrics.market_data
+                                                            .percent_change_usd_last_1_hour >
                                                         0
                                                     ? AppColors.statusPos
                                                     : AppColors.statusNeg,
@@ -111,8 +110,8 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                             child: Padding(
                                               padding: const EdgeInsets.only(
                                                   left: 12, top: 2, right: 12),
-                                              child: Text(e.metrics.marketcap
-                                                  .marketcap_dominance_percent
+                                              child: Text(e.metrics.market_data
+                                                  .percent_change_usd_last_1_hour
                                                   .toString()),
                                             ),
                                           ),
@@ -123,8 +122,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              const DetailsPage()));
+                                          builder: (context) => DetailsPage()));
                                 })),
                       )
                       .toList()),

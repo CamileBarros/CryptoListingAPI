@@ -14,7 +14,6 @@ class CryptoListingRepository {
 
   Future<GetAllChartsResponse> getAllChartsInfo() async {
     final result = await cryptoListingEndpoint.getAllChartsInfo();
-    print('aqui');
     return GetAllChartsResponse.fromJson(result.data);
   }
 }
