@@ -26,7 +26,9 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
 
   @override
   Widget build(BuildContext context) {
-    final getCryptoListingProvider = ref.watch(cryptoListingProvider);
+    // final getCryptoListingProvider = ref.watch(cryptoListingProvider);
+    final getCryptoListingProvider =
+        ref.watch(cryptoListingProvidader(cryptoListingProvidader));
     bool show = ref.watch(visible);
     return Scaffold(
         appBar: PreferredSize(
@@ -126,7 +128,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                       MaterialPageRoute(
                                           builder: (context) => DetailsPage(
                                                 info: CryptoListingDetailsData(
-                                                    slug: e.slug,
+                                                    name: e.name,
                                                     marketCap: e
                                                         .metrics
                                                         .market_data
@@ -140,7 +142,9 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                                                         .metrics
                                                         .market_data
                                                         .ohlcv_last_1_hour
-                                                        .low),
+                                                        .low,
+                                                    actualValue: e.metrics
+                                                        .market_data.price_usd),
                                               )));
                                 })),
                       )

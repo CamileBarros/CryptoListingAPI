@@ -1,12 +1,14 @@
 class CryptoListingDetailsData {
-  final String slug;
+  final String name;
   final num marketCap;
   final num highValue;
   final num lowValue;
+  final num actualValue;
 
   CryptoListingDetailsData(
-      {required this.slug,
+      {required this.name,
       required this.marketCap,
       required this.highValue,
-      required this.lowValue});
+      required this.lowValue,
+      required this.actualValue});
 }

@@ -9,13 +9,14 @@ final getCryptoListingUseCase = Provider((ref) {
       repository: ref.read(cryptoListingRepositoryProvider));
 });
 
-final cryptoListingProvider =
-    FutureProvider<List<CryptoListingViewData>>((ref) async {
-  return ref.read(getCryptoListingUseCase).execute();
-});
+// final cryptoListingProvider =
+//     FutureProvider<List<CryptoListingViewData>>((ref) async {
+//   return ref.read(getCryptoListingUseCase).execute();
+// });
 
-final teste = FutureProvider.family<List<CryptoListingViewData>, dynamic>(
-    (ref, arg) async {
+final cryptoListingProvidader =
+    FutureProvider.family<List<CryptoListingViewData>, dynamic>(
+        (ref, arg) async {
   return ref.read(getCryptoListingUseCase).execute();
 });
 
