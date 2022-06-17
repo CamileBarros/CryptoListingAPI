@@ -14,9 +14,8 @@ final getCryptoListingUseCase = Provider((ref) {
 //   return ref.read(getCryptoListingUseCase).execute();
 // });
 
-final cryptoListingProvidader =
-    FutureProvider.family<List<CryptoListingViewData>, dynamic>(
-        (ref, arg) async {
+final cryptoListingProvidader = FutureProvider.autoDispose
+    .family<List<CryptoListingViewData>, dynamic>((ref, arg) async {
   return ref.read(getCryptoListingUseCase).execute();
 });
 
