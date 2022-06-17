@@ -14,7 +14,6 @@ class DetailsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final getCryptoListingProvider = ref.watch(teste(info));
-    print("ler $info");
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -24,7 +23,7 @@ class DetailsPage extends ConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: getCryptoListingProvider.when(
-            data: (data) => Text(info),
+            data: (data) => Text(info.slug),
             error: (Object error, StackTrace? stackTrace) {},
             loading: () {}),
       ),
