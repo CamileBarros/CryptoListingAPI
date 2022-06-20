@@ -4,6 +4,7 @@ import 'package:crypto_listing/src/model/listing_details_data.dart';
 import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
 import 'package:crypto_listing/src/widgets/button_currency_convertion.dart';
+import 'package:crypto_listing/src/widgets/buttons_period_charts.dart';
 import 'package:crypto_listing/src/widgets/charts_bar.dart';
 import 'package:crypto_listing/src/widgets/charts_line.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -1,4 +1,6 @@
 /// Timeseries chart example
+import 'dart:math';
+
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:crypto_listing/shared/themes/app_colors.dart';
 import 'package:crypto_listing/src/model/charts_listing_view_data.dart';
@@ -6,6 +8,8 @@ import 'package:crypto_listing/src/screens/details_page/details_page_provider.da
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'buttons_period_charts.dart';
 
 class CryptoLineChart extends ConsumerWidget {
   const CryptoLineChart({Key? key}) : super(key: key);
@@ -23,26 +27,20 @@ class CryptoLineChart extends ConsumerWidget {
       },
     );
 
-    DateTime getNextWeekDay(int weekDay) {
-      DateTime now = DateTime.now();
+    num day = 1;
 
-      int remainDays = weekDay;
-
-      return now.subtract(const Duration(days: 1));
+    var valueLogic = 30;
+    var valuesChart = [];
+    for (var i = 0; i < valueLogic; i++) {
+      valuesChart.add([chartLine[1].values[i][1], day + i]);
     }
 
-    var days = 15;
-    var teste = DateTime.now();
-    var teste2 = teste.subtract(const Duration(days: 1));
-    var value = [];
-    for (var i = 0; i < days; i++) {
-      value.add([chartLine[0].values[i][1], teste2]);
-    }
+    for (var e = 0; e < valueLogic; e++) {}
 
-    List<charts.Series<dynamic, DateTime>> series = [
+    List<charts.Series<dynamic, num>> series = [
       charts.Series(
         id: "charts",
-        data: value,
+        data: valuesChart,
         domainFn: (dynamic series, _) => series[1],
         measureFn: (dynamic series, _) => series[0],
         colorFn: (_, __) =>
@@ -59,18 +57,18 @@ class CryptoLineChart extends ConsumerWidget {
             child: Column(
               children: [
                 Expanded(
-                    child: charts.TimeSeriesChart(series,
-                        animate: ref.read(visible.state).state = show,
-                        dateTimeFactory: const charts.LocalDateTimeFactory(),
-                        domainAxis: const charts.DateTimeAxisSpec(
-                          tickFormatterSpec:
-                              charts.AutoDateTimeTickFormatterSpec(
-                            day: charts.TimeFormatterSpec(
-                              format: 'dd',
-                              transitionFormat: 'dd MMM',
-                            ),
-                          ),
-                        )))
+                  child: charts.LineChart(
+                    series,
+                    animate: ref.read(visible.state).state = show,
+                    domainAxis: const charts.NumericAxisSpec(
+                      tickProviderSpec:
+                          charts.BasicNumericTickProviderSpec(zeroBound: false),
+                    ),
+                  ),
+                ),
+                const Center(
+                  child: ButtonsPeriodCharts(),
+                )
               ],
             ),
           ),
