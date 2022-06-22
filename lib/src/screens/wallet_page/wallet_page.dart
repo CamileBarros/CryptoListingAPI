@@ -12,9 +12,7 @@ import 'package:intl/intl.dart';
 import 'wallet_page_provider.dart';
 
 class HomeWalletPage extends ConsumerStatefulWidget {
-  const HomeWalletPage({
-    Key? key,
-  }) : super(key: key);
+  const HomeWalletPage({Key? key}) : super(key: key);
 
   @override
   ConsumerState<HomeWalletPage> createState() => _HomeWalletPageState();
@@ -65,94 +63,114 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
         ),
         body: SingleChildScrollView(
             child: getCryptoListingProvider.when(
-          data: (data) => Column(
-            children: [
-              Column(
-                  children: data
-                      .map(
-                        (e) => Container(
-                            decoration: const BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: 1, color: AppColors.primary))),
-                            child: ListTile(
-                                leading: Container(
-                                  height: 48,
-                                  width: 48,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(48),
-                                      image: const DecorationImage(
-                                          fit: BoxFit.fill,
-                                          image:
-                                              AssetImage(AppImages.iconBTC))),
-                                ),
-                                title: Text(e.symbol),
-                                subtitle: Text(e.name),
-                                trailing: AnimatedOpacity(
-                                    opacity: show ? 1 : 0,
-                                    duration: const Duration(milliseconds: 300),
-                                    curve: Curves.easeInOut,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(formatCurrency.format(
-                                            e.metrics.market_data.price_usd)),
-                                        SizedBox(
-                                          width: 53,
-                                          height: 20,
-                                          child: DecoratedBox(
+                data: (data) => Column(
+                      children: [
+                        Column(
+                            children: data
+                                .map(
+                                  (e) => Container(
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  width: 1,
+                                                  color: AppColors.primary))),
+                                      child: ListTile(
+                                          leading: Container(
+                                            height: 48,
+                                            width: 48,
                                             decoration: BoxDecoration(
-                                                color: e.metrics.market_data
-                                                            .percent_change_usd_last_1_hour >
-                                                        0
-                                                    ? AppColors.statusPos
-                                                    : AppColors.statusNeg,
+                                                color: Colors.white,
                                                 borderRadius:
-                                                    BorderRadius.circular(16)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 12, top: 2, right: 12),
-                                              child: Text(e.metrics.market_data
-                                                  .percent_change_usd_last_1_hour
-                                                  .toString()),
-                                            ),
+                                                    BorderRadius.circular(48),
+                                                image: const DecorationImage(
+                                                    fit: BoxFit.fill,
+                                                    image: AssetImage(
+                                                        AppImages.iconBTC))),
                                           ),
-                                        )
-                                      ],
-                                    )),
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => DetailsPage(
-                                                info: CryptoListingDetailsData(
-                                                    name: e.name,
-                                                    marketCap: e
-                                                        .metrics
-                                                        .market_data
-                                                        .percent_change_usd_last_1_hour,
-                                                    highValue: e
-                                                        .metrics
-                                                        .market_data
-                                                        .ohlcv_last_1_hour
-                                                        .high,
-                                                    lowValue: e
-                                                        .metrics
-                                                        .market_data
-                                                        .ohlcv_last_1_hour
-                                                        .low,
-                                                    actualValue: e.metrics
-                                                        .market_data.price_usd),
-                                              )));
-                                })),
-                      )
-                      .toList()),
-            ],
-          ),
-          error: (Object error, StackTrace? stackTrace) {},
-          loading: () {},
-        )));
+                                          title: Text(e.symbol),
+                                          subtitle: Text(e.name),
+                                          trailing: AnimatedOpacity(
+                                              opacity: show ? 1 : 0,
+                                              duration: const Duration(
+                                                  milliseconds: 300),
+                                              curve: Curves.easeInOut,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(formatCurrency.format(e
+                                                      .metrics
+                                                      .market_data
+                                                      .price_usd)),
+                                                  SizedBox(
+                                                    width: 53,
+                                                    height: 20,
+                                                    child: DecoratedBox(
+                                                      decoration: BoxDecoration(
+                                                          color: e
+                                                                      .metrics
+                                                                      .market_data
+                                                                      .percent_change_usd_last_1_hour >
+                                                                  0
+                                                              ? AppColors
+                                                                  .statusPos
+                                                              : AppColors
+                                                                  .statusNeg,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      16)),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                left: 12,
+                                                                top: 2,
+                                                                right: 12),
+                                                        child: Text(e
+                                                            .metrics
+                                                            .market_data
+                                                            .percent_change_usd_last_1_hour
+                                                            .toString()),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              )),
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        DetailsPage(
+                                                          info: CryptoListingDetailsData(
+                                                              name: e.name,
+                                                              marketCap: e
+                                                                  .metrics
+                                                                  .market_data
+                                                                  .percent_change_usd_last_1_hour,
+                                                              highValue: e
+                                                                  .metrics
+                                                                  .market_data
+                                                                  .ohlcv_last_1_hour
+                                                                  .high,
+                                                              lowValue: e
+                                                                  .metrics
+                                                                  .market_data
+                                                                  .ohlcv_last_1_hour
+                                                                  .low,
+                                                              actualValue: e
+                                                                  .metrics
+                                                                  .market_data
+                                                                  .price_usd),
+                                                        )));
+                                          })),
+                                )
+                                .toList()),
+                      ],
+                    ),
+                error: (Object error, StackTrace? stackTrace) =>
+                    const Text('Ops! Algo está errado!'),
+                loading: () => const CircularProgressIndicator())));
   }
 }

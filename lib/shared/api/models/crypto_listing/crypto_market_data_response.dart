@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:crypto_listing/shared/api/models/crypto_listing/crypto_value_day_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 

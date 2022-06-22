@@ -8,7 +8,7 @@ class PeriodFilterList {
 }
 
 class DataPeriodFilter {
-  final List<PeriodFilterList> periodDays = [
+  final List<PeriodFilterList> periods = [
     PeriodFilterList(days: "5D", periodDays: 5, x: 1),
     PeriodFilterList(days: "10D", periodDays: 10, x: 1),
     PeriodFilterList(days: "15D", periodDays: 15, x: 1),

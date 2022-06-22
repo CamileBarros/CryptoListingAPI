@@ -7,10 +7,10 @@ import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'buttons_period_charts.dart';
-
 class CryptoBarChart extends ConsumerWidget {
   const CryptoBarChart({Key? key}) : super(key: key);
+
+  //valueLogic passa a ser aq
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -59,8 +59,8 @@ class CryptoBarChart extends ConsumerWidget {
                   ),
                 ),
                 const Center(
-                  child: ButtonsPeriodCharts(),
-                )
+                    // child: ButtonsPeriodCharts(teste: (flor) => callback(flor)),
+                    )
               ],
             ),
           ),
