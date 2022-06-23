@@ -8,16 +8,19 @@ class ButtonChangeChart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool show = ref.watch(visible);
-    return SizedBox(
-      height: 35,
-      width: 35,
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: IconButton(
-            onPressed: () => ref.read(visible.state).state = !show,
-            icon: show
-                ? const Icon(Icons.show_chart)
-                : const Icon(Icons.bar_chart)),
+    return Padding(
+      padding: const EdgeInsets.only(left: 107),
+      child: SizedBox(
+        height: 35,
+        width: 35,
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: IconButton(
+              onPressed: () => ref.read(visible.state).state = !show,
+              icon: show
+                  ? const Icon(Icons.bar_chart)
+                  : const Icon(Icons.show_chart)),
+        ),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:crypto_listing/src/model/listing_details_data.dart';
 import 'package:crypto_listing/src/model/period_filter_data.dart';
 import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
+import 'package:crypto_listing/src/widgets/button_change_chart.dart';
 import 'package:crypto_listing/src/widgets/button_currency_convertion.dart';
 import 'package:crypto_listing/src/widgets/charts_bar.dart';
 import 'package:crypto_listing/src/widgets/charts_line.dart';
@@ -63,10 +64,13 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
           child: getCryptoListingProvider.when(
             data: (data) => Column(children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 10),
-                child: Text(
-                  "${AppLocalizations.of(context)!.nameCurrency}\n${widget.info.name}",
-                  style: TextStyles.titlePrimary,
+                padding: const EdgeInsets.only(left: 31, top: 20, bottom: 10),
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "${AppLocalizations.of(context)!.nameCurrency}\n${widget.info.name}",
+                    style: TextStyles.titlePrimary,
+                  ),
                 ),
               ),
               Center(
@@ -76,36 +80,41 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
                       )
                     : const CryptoBarChart(),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ...periodDays.map((e) => Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: SizedBox(
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: Row(
+                  children: [
+                    ...periodDays.map((e) => Row(
+                          children: [
+                            SizedBox(
                               height: 42,
                               width: 42,
                               child: TextButton(
                                   style: TextButton.styleFrom(
-                                      primary: AppColors.textPrimary,
-                                      onSurface: Colors.blueGrey,
-                                      backgroundColor: Colors.white),
+                                      textStyle: TextStyles.smallText,
+                                      primary: AppColors.textSecondary,
+                                      onSurface: AppColors.backgroundSecundary),
                                   onPressed: () {
                                     setState(() {
                                       chartLine = callback(e.periodDays);
                                     });
                                   },
                                   child: Text(e.days)),
-                            ),
-                          )
-                        ],
-                      ))
-                ],
+                            )
+                          ],
+                        )),
+                    const ButtonChangeChart()
+                  ],
+                ),
               ),
-              Text(AppLocalizations.of(context)!.nameInfo,
-                  style: TextStyles.titleText),
+              Padding(
+                padding: const EdgeInsets.only(left: 31, top: 20, bottom: 10),
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(AppLocalizations.of(context)!.nameInfo,
+                      style: TextStyles.titleText),
+                ),
+              ),
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Divider(height: 1, color: Colors.grey),

@@ -58,20 +58,21 @@ class _CryptoLineChartState extends ConsumerState<CryptoLineChart> {
         height: 330,
         padding: const EdgeInsets.only(right: 25, left: 25, top: 25),
         child: Card(
+            color: AppColors.primary,
             child: Padding(
-          padding: const EdgeInsets.all(9.0),
-          child: Column(children: [
-            Expanded(
-              child: charts.LineChart(
-                series,
-                animate: ref.read(visible.state).state = show,
-                domainAxis: const charts.NumericAxisSpec(
-                  tickProviderSpec:
-                      charts.BasicNumericTickProviderSpec(zeroBound: false),
+              padding: const EdgeInsets.all(9.0),
+              child: Column(children: [
+                Expanded(
+                  child: charts.LineChart(
+                    series,
+                    animate: ref.read(visible.state).state = show,
+                    domainAxis: const charts.NumericAxisSpec(
+                      tickProviderSpec:
+                          charts.BasicNumericTickProviderSpec(zeroBound: false),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ]),
-        )));
+              ]),
+            )));
   }
 }
