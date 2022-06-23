@@ -1,7 +1,7 @@
 import 'package:crypto_listing/shared/themes/app_colors.dart';
 import 'package:crypto_listing/shared/themes/app_text_styles.dart';
 import 'package:crypto_listing/src/model/charts_listing_view_data.dart';
-import 'package:crypto_listing/src/model/listing_details_data.dart';
+import 'package:crypto_listing/src/model/listing_route_details_data.dart';
 import 'package:crypto_listing/src/model/period_filter_data.dart';
 import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
@@ -23,8 +23,8 @@ class DetailsPage extends ConsumerStatefulWidget {
 }
 
 class _DetailsPageState extends ConsumerState<DetailsPage> {
-  List<dynamic> chartLine = [];
-  num valueLogic = 15;
+  List<dynamic> chartsData = [];
+  num periodDay = 10;
   num day = 0;
 
   @override
@@ -32,25 +32,24 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
     final getCryptoListingProvider = ref.watch(chartsListingProvider);
     getCryptoListingProvider.whenOrNull(
       data: (data) {
-        chartLine =
+        chartsData =
             data.map((e) => ChartsListingViewData(values: e.values)).toList();
       },
     );
 
-    List<dynamic> callback(num valueLogic) {
-      final List<dynamic> valuesChart = [];
-      for (var i = 0; i < valueLogic; i++) {
-        valuesChart.add([chartLine[0].values[i][1], day + i]);
+    List<dynamic> funDatasCharts(num periodDay) {
+      final List<dynamic> valuesOfCharts = [];
+      for (var i = 0; i < periodDay; i++) {
+        valuesOfCharts.add([chartsData[0].values[i][1], day + i]);
 
-        day = valueLogic;
+        day = periodDay;
       }
-      return valuesChart;
+      return valuesOfCharts;
     }
 
-    chartLine = callback(valueLogic);
+    chartsData = funDatasCharts(periodDay);
 
     final periodDays = DataPeriodFilter().periods;
-    // final getCryptoListingProvider = ref.watch(chartsListingProvider);
     final formatCurrency = NumberFormat.simpleCurrency();
     bool show = ref.watch(visible);
     return Scaffold(
@@ -76,35 +75,43 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
               Center(
                 child: show
                     ? CryptoLineChart(
-                        teste: chartLine,
+                        data: chartsData,
                       )
-                    : const CryptoBarChart(),
+                    : CryptoBarChart(data: chartsData),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: Row(
-                  children: [
-                    ...periodDays.map((e) => Row(
-                          children: [
-                            SizedBox(
-                              height: 42,
-                              width: 42,
-                              child: TextButton(
-                                  style: TextButton.styleFrom(
-                                      textStyle: TextStyles.smallText,
-                                      primary: AppColors.textSecondary,
-                                      onSurface: AppColors.backgroundSecundary),
-                                  onPressed: () {
-                                    setState(() {
-                                      chartLine = callback(e.periodDays);
-                                    });
-                                  },
-                                  child: Text(e.days)),
-                            )
-                          ],
-                        )),
-                    const ButtonChangeChart()
-                  ],
+                padding: const EdgeInsets.only(left: 25, right: 25, bottom: 0),
+                child: Card(
+                  color: AppColors.primary,
+                  child: Row(
+                    children: [
+                      ...periodDays.map((e) => Row(
+                            children: [
+                              SizedBox(
+                                height: 42,
+                                width: 42,
+                                child: TextButton(
+                                    style: TextButton.styleFrom(
+                                        textStyle: TextStyles.smallText,
+                                        primary: AppColors.textSecondary,
+                                        onSurface:
+                                            AppColors.backgroundSecundary,
+                                        backgroundColor:
+                                            periodDay == e.periodDays
+                                                ? AppColors.backgroundSecundary
+                                                : AppColors.primary),
+                                    onPressed: () {
+                                      setState(() {
+                                        periodDay = e.periodDays;
+                                      });
+                                    },
+                                    child: Text(e.days)),
+                              )
+                            ],
+                          )),
+                      const ButtonChangeChart()
+                    ],
+                  ),
                 ),
               ),
               Padding(
@@ -154,7 +161,7 @@ class _DetailsPageState extends ConsumerState<DetailsPage> {
               ])
             ]),
             error: (Object error, StackTrace? stackTrace) =>
-                const Text('Ops! Algo está errado!'),
+                Text(AppLocalizations.of(context)!.textError),
             loading: () => const CircularProgressIndicator(),
           ),
         ));

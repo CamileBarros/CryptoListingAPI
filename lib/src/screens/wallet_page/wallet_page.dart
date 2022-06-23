@@ -1,14 +1,13 @@
 import 'package:crypto_listing/shared/themes/app_colors.dart';
 import 'package:crypto_listing/shared/themes/app_images.dart';
 import 'package:crypto_listing/shared/themes/app_text_styles.dart';
-import 'package:crypto_listing/src/model/listing_details_data.dart';
+import 'package:crypto_listing/src/model/listing_route_details_data.dart';
 import 'package:crypto_listing/src/screens/details_page/details_page.dart';
 import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
-
 import 'wallet_page_provider.dart';
 
 class HomeWalletPage extends ConsumerStatefulWidget {
@@ -20,11 +19,8 @@ class HomeWalletPage extends ConsumerStatefulWidget {
 
 class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
   final formatCurrency = NumberFormat.simpleCurrency();
-  int x = 2; // part of logic of colors of the period's button
-
   @override
   Widget build(BuildContext context) {
-    // final getCryptoListingProvider = ref.watch(cryptoListingProvider);
     final getCryptoListingProvider =
         ref.watch(cryptoListingProvidader(cryptoListingProvidader));
     bool show = ref.watch(visible);

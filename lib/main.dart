@@ -7,8 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'src/widgets/bottom_navigation.dart';
 
 void main() {
-  runApp(const ProviderScope(
-      child: MyApp())); //ProviderScope armazerna os estados dos providers
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

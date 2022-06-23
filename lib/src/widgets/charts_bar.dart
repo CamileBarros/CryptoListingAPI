@@ -1,49 +1,33 @@
 /// Timeseries chart example
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:crypto_listing/shared/themes/app_colors.dart';
-import 'package:crypto_listing/src/model/charts_listing_view_data.dart';
-import 'package:crypto_listing/src/screens/details_page/details_page_provider.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CryptoBarChart extends ConsumerWidget {
-  const CryptoBarChart({Key? key}) : super(key: key);
-
-  //valueLogic passa a ser aq
+class CryptoBarChart extends ConsumerStatefulWidget {
+  final List<dynamic> data;
+  const CryptoBarChart({Key? key, required this.data}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _CryptoBarChartState();
+}
+
+class _CryptoBarChartState extends ConsumerState<CryptoBarChart> {
+  @override
+  Widget build(BuildContext context) {
     bool show = ref.watch(visible); //bool of animation
-
-    final getCryptoListingProvider = ref.watch(chartsListingProvider);
-    List<dynamic> chartBar = [];
-    getCryptoListingProvider.whenOrNull(
-      data: (data) {
-        chartBar =
-            data.map((e) => ChartsListingViewData(values: e.values)).toList();
-      },
-    );
-
-    num day = 1;
-
-    var valueLogic = 30;
-    var valuesChart = [];
-    for (var i = 0; i < valueLogic; i++) {
-      valuesChart.add([chartBar[1].values[i][1], day + i]);
-    }
 
     List<charts.Series<dynamic, String>> series = [
       charts.Series(
         id: "charts",
-        data: valuesChart,
+        data: widget.data,
         domainFn: (dynamic series, _) => series[1].toString(),
         measureFn: (dynamic series, _) => series[0],
         colorFn: (_, __) =>
             charts.ColorUtil.fromDartColor(AppColors.linePrimary),
       )
     ];
-
     return Container(
         height: 330,
         padding: const EdgeInsets.only(right: 25, left: 25, top: 25),
@@ -54,14 +38,14 @@ class CryptoBarChart extends ConsumerWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: charts.BarChart(
-                    series,
-                    animate: ref.read(visible.state).state = show,
-                  ),
+                  child: charts.BarChart(series,
+                      animate: ref.read(visible.state).state = show,
+                      primaryMeasureAxis: const charts.NumericAxisSpec(
+                          renderSpec: charts.NoneRenderSpec()),
+                      domainAxis: const charts.OrdinalAxisSpec(
+                          showAxisLine: true,
+                          renderSpec: charts.NoneRenderSpec())),
                 ),
-                const Center(
-                    // child: ButtonsPeriodCharts(teste: (flor) => callback(flor)),
-                    )
               ],
             ),
           ),
