@@ -24,6 +24,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
     final getCryptoListingProvider =
         ref.watch(cryptoListingProvidader(cryptoListingProvidader));
     bool show = ref.watch(visible);
+    ref.watch(valueWallet);
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(200),
@@ -43,7 +44,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                     duration: const Duration(milliseconds: 300),
                     curve: Curves.easeInOut,
                     child: Text(
-                      '5000',
+                      formatCurrency.format(ref.read(valueWallet)),
                       style: TextStyles.titlePrimary,
                     ),
                   ),

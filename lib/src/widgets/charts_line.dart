@@ -1,8 +1,10 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:crypto_listing/shared/themes/app_colors.dart';
+import 'package:crypto_listing/shared/themes/app_text_styles.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class CryptoLineChart extends ConsumerStatefulWidget {
   final List<dynamic> data;
@@ -14,8 +16,10 @@ class CryptoLineChart extends ConsumerStatefulWidget {
 }
 
 class _CryptoLineChartState extends ConsumerState<CryptoLineChart> {
+  final formatCurrency = NumberFormat.simpleCurrency();
   @override
   Widget build(BuildContext context) {
+    ref.watch(valueWallet);
     bool show = ref.watch(visible); //bool of animation
 
     List<charts.Series<dynamic, num>> series = [
@@ -36,6 +40,13 @@ class _CryptoLineChartState extends ConsumerState<CryptoLineChart> {
             child: Padding(
               padding: const EdgeInsets.all(9.0),
               child: Column(children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    formatCurrency.format(ref.read(valueWallet)),
+                    style: TextStyles.titlePrimary,
+                  ),
+                ),
                 Expanded(
                   child: charts.LineChart(
                     series,

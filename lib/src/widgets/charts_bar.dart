@@ -1,9 +1,11 @@
 /// Timeseries chart example
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:crypto_listing/shared/themes/app_colors.dart';
+import 'package:crypto_listing/shared/themes/app_text_styles.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class CryptoBarChart extends ConsumerStatefulWidget {
   final List<dynamic> data;
@@ -14,9 +16,11 @@ class CryptoBarChart extends ConsumerStatefulWidget {
 }
 
 class _CryptoBarChartState extends ConsumerState<CryptoBarChart> {
+  final formatCurrency = NumberFormat.simpleCurrency();
   @override
   Widget build(BuildContext context) {
     bool show = ref.watch(visible); //bool of animation
+    ref.watch(valueWallet);
 
     List<charts.Series<dynamic, String>> series = [
       charts.Series(
@@ -37,6 +41,13 @@ class _CryptoBarChartState extends ConsumerState<CryptoBarChart> {
             padding: const EdgeInsets.all(9.0),
             child: Column(
               children: [
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    formatCurrency.format(ref.read(valueWallet)),
+                    style: TextStyles.titlePrimary,
+                  ),
+                ),
                 Expanded(
                   child: charts.BarChart(series,
                       animate: ref.read(visible.state).state = show,
