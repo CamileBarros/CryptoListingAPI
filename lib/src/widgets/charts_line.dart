@@ -19,7 +19,6 @@ class _CryptoLineChartState extends ConsumerState<CryptoLineChart> {
   final formatCurrency = NumberFormat.simpleCurrency();
   @override
   Widget build(BuildContext context) {
-    ref.watch(valueWallet);
     bool show = ref.watch(visible); //bool of animation
 
     List<charts.Series<dynamic, num>> series = [

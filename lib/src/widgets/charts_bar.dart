@@ -20,8 +20,6 @@ class _CryptoBarChartState extends ConsumerState<CryptoBarChart> {
   @override
   Widget build(BuildContext context) {
     bool show = ref.watch(visible); //bool of animation
-    ref.watch(valueWallet);
-
     List<charts.Series<dynamic, String>> series = [
       charts.Series(
         id: "charts",
