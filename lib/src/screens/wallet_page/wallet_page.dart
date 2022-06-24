@@ -167,7 +167,7 @@ class _HomeWalletPageState extends ConsumerState<HomeWalletPage> {
                       ],
                     ),
                 error: (Object error, StackTrace? stackTrace) =>
-                    const Text('Ops! Algo está errado!'),
+                    Text(AppLocalizations.of(context)!.textError),
                 loading: () => const CircularProgressIndicator())));
   }
 }
