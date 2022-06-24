@@ -7,4 +7,5 @@ class AppImages {
   static const iconWallet = "assets/images/carteiras_icon.png";
   static const iconArrow = "assets/images/arrow.png";
   static const iconConfirmed = "assets/images/Shape.png";
+  static const iconTransition = "assets/images/Transition.png";
 }
