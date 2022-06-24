@@ -6,6 +6,7 @@ part 'crypto_metrics_response.g.dart';
 
 @JsonSerializable()
 class CryptoMetricsResponse {
+  // ignore: non_constant_identifier_names
   final CryptoMarketDataResponse market_data;
   final CryptoMarketCapResponse marketcap;
 

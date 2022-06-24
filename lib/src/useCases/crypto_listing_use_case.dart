@@ -9,14 +9,14 @@ class GetCryptoListingUseCase {
   GetCryptoListingUseCase({required this.repository});
 
   Future<List<CryptoListingViewData>> execute() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final response = await repository.getAllCryptoInfo();
 
     return response.toViewData();
   }
 
   Future<List<ChartsListingViewData>> start() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final response = await repository.getAllChartsInfo();
 
     return response.toViewDataCharts();

@@ -15,4 +15,9 @@ class TextStyles {
 
   static final linkText = GoogleFonts.sourceSansPro(
       fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.brandPrimary);
+
+  static final smallText = GoogleFonts.sourceSansPro(
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textSecondary);
 }

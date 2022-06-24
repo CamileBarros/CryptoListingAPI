@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'src/widgets/bottom_navigation.dart';
 
 void main() {
-  runApp(const ProviderScope(
-      child: MyApp())); //ProviderScope armazerna os estados dos providers
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +19,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/navigationBar': (BuildContext context) => const BottomNavBar()
       },
-      // ignore: unnecessary_const
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -1,6 +1,5 @@
 import 'package:crypto_listing/shared/themes/app_colors.dart';
 import 'package:crypto_listing/shared/themes/app_images.dart';
-import 'package:crypto_listing/src/screens/details_page/details_page.dart';
 import 'package:crypto_listing/src/screens/home_page/home_page.dart';
 import 'package:crypto_listing/src/screens/movement_page/movement_page.dart';
 import 'package:crypto_listing/src/screens/wallet_page/wallet_page.dart';

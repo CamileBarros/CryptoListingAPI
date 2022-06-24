@@ -6,6 +6,7 @@ part 'crypto_market_cap_response.g.dart';
 
 @JsonSerializable()
 class CryptoMarketCapResponse {
+  // ignore: non_constant_identifier_names
   final num marketcap_dominance_percent;
 
   CryptoMarketCapResponse(this.marketcap_dominance_percent);
