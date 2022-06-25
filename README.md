@@ -1,16 +1,13 @@
-# crypto_listing
+# Cryptocurrency project 
 
-A new Flutter project.
+Flutter
+---
+App with messari api. 
+Originally this app was built on another github belonging to me that you can see in this [camilebarroswarren](https://github.com/camilebarroswarren)!
 
-## Getting Started
+The project uses the riverpod to manage states and is also internationalized (l10n).
+There are also two charts built with the charts_flutter library.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![WhatsApp Image 2022-06-24 at 2 43 37 PM](https://user-images.githubusercontent.com/88804280/175614443-c9191a8a-38e8-45b4-bfb1-6812118110e4.jpeg)
+![WhatsApp Image 2022-06-24 at 2 43 37 PM (1)](https://user-images.githubusercontent.com/88804280/175614430-1d166c69-767b-43db-998d-91547f02491c.jpeg)
+![WhatsApp Image 2022-06-24 at 2 43 37 PM (2)](https://user-images.githubusercontent.com/88804280/175614438-b9c3a073-2991-4ee2-b3b7-71bddb920c14.jpeg)
