@@ -3,7 +3,7 @@
 Flutter
 ---
 App with messari api. 
-Originally this app was built on another github belonging to me that you can see in this [camilebarroswarren](https://github.com/camilebarroswarren)!
+Originally this app was built on another github belonging to me that you can see that historic of activities here [camilebarroswarren](https://github.com/camilebarroswarren)!
 
 The project uses the riverpod to manage states and is also internationalized (l10n).
 There are also two charts built with the charts_flutter library.
